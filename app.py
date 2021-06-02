@@ -1,12 +1,11 @@
 from flask import Flask, render_template
 import datetime
+import requests
+import json
 
 app = Flask(__name__)
 
-posts = [
-    {"title": "djksjd", "body": "asdjasdlljdajdsl"},
-    {"title": "djk21332132sjd", "body": "asdj123231asdlljdajdsl"},
-]
+posts = json.loads(requests.get("https://jsonplaceholder.typicode.com/posts").text)
 
 
 @app.route("/")
